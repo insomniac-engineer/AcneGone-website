@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy policy — AcneGone</title>
+  <meta name="description" content="AcneGone privacy policy. Progress photos and treatment details stay on your phone. No account. No ads." />
+  <link rel="icon" href="assets/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,560&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <svg width="0" height="0" aria-hidden="true" style="position:absolute">
+    <defs>
+      <linearGradient id="logoGrad" x1="64" y1="32" x2="64" y2="98" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#58A1F1" />
+        <stop offset="100%" stop-color="#2252D7" />
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <header class="header is-scrolled">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html" aria-label="AcneGone home">
+        <span class="brand-mark">
+          <svg viewBox="0 0 128 128" aria-hidden="true">
+            <path fill="none" stroke="url(#logoGrad)" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" d="M 24 98 L 64 32 L 104 98" />
+          </svg>
+        </span>
+        AcneGone
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html#product">Product</a>
+        <a href="index.html#why">Why AcneGone</a>
+        <a href="index.html#privacy">Privacy</a>
+        <a href="index.html#faq">FAQ</a>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary" href="index.html#download">Get AcneGone</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="legal-page">
+    <article class="wrap">
+      <p class="section-kicker">Legal</p>
+      <h1>Privacy policy</h1>
+      <p class="meta">Last updated: 15 August 2026</p>
+
+      <h2>What AcneGone is</h2>
+      <p>AcneGone is a personal skin and isotretinoin (Accutane) tracker. It is not a medical device, does not diagnose or treat acne, and does not replace advice from a qualified clinician.</p>
+
+      <h2>What stays on your phone</h2>
+      <p>Progress photos, pill logs, symptoms, dosage history, dose goals, and dermatologist visits are stored only on this device. Photos are not uploaded to AcneGone servers. Android backup of app data is disabled so those files are not copied to Google Drive.</p>
+
+      <h2>Optional anonymous analytics</h2>
+      <p>If you opt in, AcneGone sends anonymous app events (for example that a photo was saved, not the photo itself) plus an app-generated device ID, platform, and app version. We do not send pill status, symptoms, body weight, dose amounts, or spot counts. Approximate country can be inferred from the network request (Cloudflare country header) to understand where the app is used.</p>
+      <p>The analytics backend is hosted on Supabase. The mobile app uses only the public anon key and write-only server functions — other users’ rows are not readable from the app.</p>
+
+      <h2>What we do not collect</h2>
+      <p>We do not create accounts, collect your name or email, or use your data for advertising. Photos and treatment details are not sold or shared with other companies for their own use.</p>
+
+      <h2>Your choices</h2>
+      <p>You can decline analytics on first launch or turn it off later in Profile. Turning it off stops new events and deletes the anonymous analytics rows tied to this device. Reset my progress erases treatment data and photos on the device and also deletes those analytics rows. Uninstalling the app removes local data.</p>
+
+      <h2>Contact</h2>
+      <p>Questions about this policy: open an issue on the <a href="https://github.com/insomniac-engineer/AcneGone">AcneGone GitHub repository</a>.</p>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="legal">
+        <span>© 2026 AcneGone</span>
+        <a href="index.html">Back to home</a>
+      </div>
+    </div>
+  </footer>
+
+  <aside class="med-banner" id="med-banner" hidden>
+    <div class="wrap med-banner-inner">
+      <p>AcneGone is a personal tracking tool and daily diary — not medical advice.</p>
+      <button type="button" class="med-banner-read" data-med-open>Read</button>
+      <button type="button" class="med-banner-close" data-med-dismiss aria-label="Dismiss medical disclaimer">×</button>
+    </div>
+  </aside>
+
+  <dialog class="med-dialog" id="med-dialog" aria-labelledby="med-dialog-title">
+    <h2 id="med-dialog-title">Medical disclaimer</h2>
+    <p>AcneGone is a personal tracking tool and daily diary. It does not provide medical advice, diagnosis, or treatment. Always consult your dermatologist or qualified healthcare provider regarding prescription medications like Isotretinoin/Accutane.</p>
+    <form method="dialog">
+      <button type="submit" class="btn btn-primary">Got it</button>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
