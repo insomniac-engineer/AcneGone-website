@@ -92,10 +92,12 @@ button {
   background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .header.is-scrolled {
   border-bottom-color: var(--line);
+  box-shadow: 0 8px 24px rgba(16, 36, 28, 0.06);
 }
 
 .header-inner {
@@ -224,6 +226,7 @@ button {
     radial-gradient(closest-side at 55% 80%, var(--mesh-c), transparent 70%);
   opacity: 0.55;
   pointer-events: none;
+  animation: mesh-drift 18s ease-in-out infinite alternate;
 }
 
 .hero-grid {
@@ -252,6 +255,7 @@ button {
   border-radius: 50%;
   background: var(--mesh-a);
   box-shadow: 0 0 0 4px rgba(142, 228, 168, 0.35);
+  animation: pulse-dot 2.4s ease-in-out infinite;
 }
 
 h1,
@@ -346,21 +350,7 @@ h2 em,
   box-shadow: 0 16px 40px rgba(16, 36, 28, 0.12);
   z-index: 2;
   min-width: 170px;
-}
-
-.float-card .label {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.float-card .value {
-  font-weight: 800;
-  font-size: 18px;
-  letter-spacing: -0.03em;
-  margin-top: 2px;
+  opacity: 0;
 }
 
 .float-card.day {
@@ -376,6 +366,21 @@ h2 em,
 .float-card.vault {
   left: 2%;
   bottom: 16%;
+}
+
+.float-card .label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.float-card .value {
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: -0.03em;
+  margin-top: 2px;
 }
 
 .pill {
@@ -498,12 +503,18 @@ h2,
   padding: 22px 8px 22px 0;
   border-bottom: 1px solid var(--line);
   width: 100%;
+  transition: padding 0.25s ease;
+}
+
+.feature-item.is-active {
+  padding-left: 4px;
 }
 
 .feature-item h3 {
   font-size: 22px;
   letter-spacing: -0.03em;
   font-weight: 800;
+  transition: color 0.2s ease;
 }
 
 .feature-item p {
@@ -511,6 +522,7 @@ h2,
   margin-top: 10px;
   color: var(--muted);
   max-width: 42ch;
+  animation: fade-in 0.3s ease;
 }
 
 .feature-item.is-active h3 {
@@ -542,13 +554,15 @@ h2,
 
 .features .phone-screen img {
   opacity: 0;
-  transition: opacity 0.25s ease;
+  transform: scale(0.985);
+  transition: opacity 0.4s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
   position: absolute;
   inset: 0;
 }
 
 .features .phone-screen img.is-on {
   opacity: 1;
+  transform: scale(1);
 }
 
 /* Why choose */
@@ -722,6 +736,7 @@ h2,
 .faq-item p {
   padding-bottom: 20px;
   color: var(--muted);
+  animation: fade-in 0.25s ease;
 }
 
 /* Closer */
@@ -750,6 +765,7 @@ h2,
     radial-gradient(closest-side at 20% 40%, rgba(142, 228, 168, 0.35), transparent 70%),
     radial-gradient(closest-side at 80% 60%, rgba(126, 200, 240, 0.28), transparent 70%);
   pointer-events: none;
+  animation: mesh-drift 22s ease-in-out infinite alternate-reverse;
 }
 
 .closer .wrap {
@@ -950,6 +966,7 @@ h2,
     background: #fff;
     z-index: 40;
     padding: 24px;
+    animation: fade-up 0.28s ease;
   }
 
   .mobile-nav a {
@@ -1037,8 +1054,168 @@ body.has-med-banner {
   width: 100%;
 }
 
+/* Motion */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes hero-phone-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes float-card {
+  0%, 100% { margin-top: 0; }
+  50% { margin-top: -8px; }
+}
+
+@keyframes mesh-drift {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(3%, -2%) scale(1.04); }
+}
+
+@keyframes pulse-dot {
+  0%, 100% {
+    box-shadow: 0 0 0 4px rgba(142, 228, 168, 0.35);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 7px rgba(142, 228, 168, 0.18);
+    transform: scale(1.08);
+  }
+}
+
+.hero-grid > div:first-child > * {
+  opacity: 0;
+}
+
+.hero.is-ready .hero-grid > div:first-child > .kicker {
+  animation: fade-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.05s forwards;
+}
+
+.hero.is-ready .hero-grid > div:first-child > h1 {
+  animation: fade-up 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.12s forwards;
+}
+
+.hero.is-ready .hero-grid > div:first-child > .lede {
+  animation: fade-up 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+}
+
+.hero.is-ready .hero-grid > div:first-child > .store-row {
+  animation: fade-up 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.28s forwards;
+}
+
+.hero.is-ready .hero-grid > div:first-child > .hero-note {
+  animation: fade-up 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.34s forwards;
+}
+
+.hero-stage .phone {
+  opacity: 0;
+}
+
+.hero.is-ready .hero-stage .phone {
+  animation: hero-phone-in 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.22s forwards;
+}
+
+.hero.is-ready .float-card.day {
+  animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.45s forwards,
+    float-card 5.5s ease-in-out 1.2s infinite;
+}
+
+.hero.is-ready .float-card.track {
+  animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.52s forwards,
+    float-card 5.5s ease-in-out 1.4s infinite;
+}
+
+.hero.is-ready .float-card.vault {
+  animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.58s forwards,
+    float-card 5.5s ease-in-out 1.6s infinite;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0s);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.why-card,
+.inc-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.why-card:hover,
+.inc-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(16, 36, 28, 0.08);
+}
+
+.inc-card:hover {
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.med-banner {
+  animation: fade-up 0.4s ease;
+}
+
+.med-dialog[open] {
+  animation: fade-in 0.2s ease;
+}
+
+.med-dialog[open]::backdrop {
+  animation: fade-in 0.2s ease;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .btn:hover { transform: none; }
-  .features .phone-screen img { transition: none; }
+  .btn:hover,
+  .why-card:hover,
+  .inc-card:hover { transform: none; }
+  .features .phone-screen img,
+  .feature-item,
+  .feature-item h3,
+  .reveal,
+  .header { transition: none; }
+  .hero-mesh,
+  .closer-mesh,
+  .kicker .dot,
+  .float-card,
+  .hero-grid > div:first-child > *,
+  .hero-stage .phone,
+  .hero.is-ready .float-card,
+  .feature-item p,
+  .faq-item p,
+  .med-banner,
+  .med-dialog[open],
+  .med-dialog[open]::backdrop {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .reveal { opacity: 1; transform: none; }
 }

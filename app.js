@@ -3,6 +3,7 @@ const menuToggle = document.querySelector(".menu-toggle");
 const mobileNav = document.querySelector(".mobile-nav");
 const featureButtons = document.querySelectorAll("[data-feature]");
 const featureImages = document.querySelectorAll("[data-feature-img]");
+const hero = document.querySelector(".hero");
 
 const onScroll = () => {
   header?.classList.toggle("is-scrolled", window.scrollY > 8);
@@ -10,6 +11,10 @@ const onScroll = () => {
 
 window.addEventListener("scroll", onScroll, { passive: true });
 onScroll();
+
+requestAnimationFrame(() => {
+  hero?.classList.add("is-ready");
+});
 
 menuToggle?.addEventListener("click", () => {
   const open = mobileNav?.classList.toggle("is-open");
@@ -38,6 +43,52 @@ featureButtons.forEach((button) => {
     });
   });
 });
+
+const revealSelectors = [
+  ".section-kicker",
+  ".section > .wrap > h2",
+  ".section-lead",
+  ".features-grid",
+  ".why-card",
+  ".inc-card",
+  ".privacy-grid > *",
+  ".faq-item",
+  ".closer .wrap > .section-kicker",
+  ".closer .wrap > .h2",
+  ".closer .wrap > .section-lead",
+  ".closer .wrap > .store-row",
+];
+
+const revealItems = [];
+revealSelectors.forEach((selector) => {
+  document.querySelectorAll(selector).forEach((el) => revealItems.push(el));
+});
+
+revealItems.forEach((el, index) => {
+  el.classList.add("reveal");
+  const groupDelay = Math.min((index % 4) * 0.08, 0.24);
+  el.style.setProperty("--reveal-delay", `${groupDelay}s`);
+});
+
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+if (!prefersReducedMotion && "IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { root: null, rootMargin: "0px 0px -8% 0px", threshold: 0.12 },
+  );
+
+  revealItems.forEach((el) => revealObserver.observe(el));
+} else {
+  revealItems.forEach((el) => el.classList.add("is-visible"));
+}
 
 const MED_DISMISS_KEY = "acnegone-med-disclaimer-dismissed";
 const medBanner = document.querySelector("#med-banner");
