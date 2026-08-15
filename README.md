@@ -1,38 +1,66 @@
 # AcneGone website
 
-Static landing page for [AcneGone](https://github.com/insomniac-engineer/AcneGone) — a free, private Accutane companion.
+Marketing site for **[AcneGone](https://github.com/insomniac-engineer/AcneGone)** — a free, private companion for isotretinoin (Accutane) and skin tracking. No account, no ads, photos stay on your phone.
 
-**Live:** https://insomniac-engineer.github.io/AcneGone-website/
+This repo is a static landing page (HTML/CSS/JS) published on GitHub Pages. The mobile app lives in the [AcneGone app repo](https://github.com/insomniac-engineer/AcneGone).
 
-## Preview
+**Live site:** https://insomniac-engineer.github.io/AcneGone-website/
 
-### Hero
+![AcneGone landing page — hero with phone mockup, floating stat cards, and store badges](screenshots/01-hero.png)
 
-![AcneGone landing page hero with phone mockup and floating stat cards](screenshots/01-hero.png)
+## What’s on the site
 
-### Product
+- **Hero** — product pitch, App Store / Google Play badges, animated phone mockup
+- **Product** — interactive tabs pairing copy with in-app screenshots
+- **Why AcneGone** — empathy-focused benefits for the full treatment course
+- **Everything included** — free feature grid (no subscriptions)
+- **Privacy** — on-device photos, optional analytics, link to privacy policy
+- **Download** — closing CTA with drifting background orbs
 
-Interactive feature tabs with in-app screenshots.
+### Highlights
 
-![Product features — dose journey](screenshots/02-features.png)
+- Dose journey, pill log, and treatment day tracking
+- Private photo vault with compare, share (Hide eyes), and alignment camera
+- Trends, symptoms, and PDF export for derm visits
+- Medical disclaimer banner and full privacy policy page
 
-![Share your progress with Hide eyes enabled](screenshots/03-features-share.png)
+## Site preview
+
+### Product — dose journey
+
+Interactive tabs let visitors explore each feature. Default tab shows the dose journey card and treatment progress.
+
+![Product section — dose journey feature tab with phone mockup](screenshots/02-features.png)
+
+### Product — share your progress
+
+Share tab highlights the before/after card with **Hide eyes** enabled — a core privacy feature.
+
+![Product section — Share your progress tab with Hide eyes on before/after photos](screenshots/03-features-share.png)
 
 ### Why AcneGone
 
-![Why AcneGone — empathy-focused copy and benefit cards](screenshots/04-why.png)
+Copy focused on the emotional weight of a long course — organized tracking without judgment.
+
+![Why AcneGone section — benefit cards and supportive messaging](screenshots/04-why.png)
 
 ### Everything included
 
-![Everything included free — feature grid](screenshots/05-included.png)
+All app features listed as free — pill log, vault, camera, trends, PDF export, and more.
 
-### Privacy
+![Everything included section — feature grid on soft gradient background](screenshots/05-included.png)
 
-![Privacy by design section](screenshots/06-privacy.png)
+### Privacy by design
+
+On-device storage, no photo uploads, and optional anonymous analytics explained beside a phone mockup.
+
+![Privacy section — privacy principles with in-app privacy sheet mockup](screenshots/06-privacy.png)
 
 ### Download
 
-![Download closer with store buttons](screenshots/07-download.png)
+Dark closing section with animated background orbs and official store badges.
+
+![Download section — closing CTA with App Store and Google Play badges](screenshots/07-download.png)
 
 ## Local preview
 
@@ -44,31 +72,33 @@ Open http://localhost:4173
 
 ## Deploy
 
-Published via GitHub Pages from the `main` branch (root).
+GitHub Pages serves the `main` branch from the repo root. Push to `main` to redeploy.
 
-Push to `main` and Pages will rebuild automatically.
+## App screenshots in `assets/screens/`
 
-## App screenshots
+Phone mockups are exported from the [AcneGone](https://github.com/insomniac-engineer/AcneGone) app repo:
 
-Phone mockups in `assets/screens/` come from the main app repo:
-
-- Most screens: simulator captures in `AcneGone/store-listing/play/captures/`
-- Share screen (with Hide eyes): regenerate from the app repo
+| Source | Screens |
+|--------|---------|
+| `AcneGone/store-listing/play/captures/` | Most in-app screenshots |
+| `AcneGone/store-listing/play/compose-share-screenshot.cjs` | Share screen with Hide eyes |
 
 ```bash
-# from AcneGone/store-listing/play
+# Regenerate share screenshot (from AcneGone repo)
+cd ../AcneGone/store-listing/play
 node compose-share-screenshot.cjs
 ```
 
+Store badge SVGs live in `assets/badges/`.
+
 ## Regenerate README screenshots
 
-Captures viewport shots of each landing-page section from the live site (or pass a local URL):
+Captures each landing-page section from the live site (or a local URL):
 
 ```bash
 npm install
-node scripts/capture-readme-screenshots.mjs
-# or against local preview:
-node scripts/capture-readme-screenshots.mjs http://localhost:4173/
+npm run screenshots
+# or: node scripts/capture-readme-screenshots.mjs http://localhost:4173/
 ```
 
-Requires Google Chrome installed locally.
+Requires Google Chrome. The script dismisses the medical disclaimer banner for cleaner captures.

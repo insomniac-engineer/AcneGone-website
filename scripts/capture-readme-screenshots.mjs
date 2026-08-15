@@ -28,12 +28,34 @@ if (!executablePath) {
 
 const delay = (ms) => new Promise((r) => setTimeout(r, ms));
 
+const preparePage = async (page) => {
+  await page.evaluateOnNewDocument(() => {
+    sessionStorage.setItem('acnegone-med-disclaimer-dismissed', '1');
+  });
+};
+
+const dismissBanner = async (page) => {
+  await page.evaluate(() => {
+    sessionStorage.setItem('acnegone-med-disclaimer-dismissed', '1');
+    document.querySelector('#med-banner')?.setAttribute('hidden', '');
+    document.body.classList.remove('has-med-banner');
+  });
+};
+
 const shots = [
-  { file: '01-hero.png', action: async (page) => page.goto(baseUrl, { waitUntil: 'networkidle2' }) },
+  {
+    file: '01-hero.png',
+    action: async (page) => {
+      await page.goto(baseUrl, { waitUntil: 'networkidle2' });
+      await dismissBanner(page);
+      await delay(900);
+    },
+  },
   {
     file: '02-features.png',
     action: async (page) => {
       await page.goto(`${baseUrl.replace(/\/?$/, '/')}#product`, { waitUntil: 'networkidle2' });
+      await dismissBanner(page);
       await page.evaluate(() => document.getElementById('product')?.scrollIntoView({ block: 'start' }));
       await delay(600);
     },
@@ -42,6 +64,7 @@ const shots = [
     file: '03-features-share.png',
     action: async (page) => {
       await page.goto(`${baseUrl.replace(/\/?$/, '/')}#product`, { waitUntil: 'networkidle2' });
+      await dismissBanner(page);
       const shareTab = await page.$('[data-feature="share"]');
       if (shareTab) {
         await shareTab.click();
@@ -55,6 +78,7 @@ const shots = [
     file: '04-why.png',
     action: async (page) => {
       await page.goto(`${baseUrl.replace(/\/?$/, '/')}#why`, { waitUntil: 'networkidle2' });
+      await dismissBanner(page);
       await page.evaluate(() => document.getElementById('why')?.scrollIntoView({ block: 'start' }));
       await delay(600);
     },
@@ -63,6 +87,7 @@ const shots = [
     file: '05-included.png',
     action: async (page) => {
       await page.goto(`${baseUrl.replace(/\/?$/, '/')}#included`, { waitUntil: 'networkidle2' });
+      await dismissBanner(page);
       await page.evaluate(() => document.getElementById('included')?.scrollIntoView({ block: 'start' }));
       await delay(600);
     },
@@ -71,6 +96,7 @@ const shots = [
     file: '06-privacy.png',
     action: async (page) => {
       await page.goto(`${baseUrl.replace(/\/?$/, '/')}#privacy`, { waitUntil: 'networkidle2' });
+      await dismissBanner(page);
       await page.evaluate(() => document.getElementById('privacy')?.scrollIntoView({ block: 'start' }));
       await delay(600);
     },
@@ -79,6 +105,8 @@ const shots = [
     file: '07-download.png',
     action: async (page) => {
       await page.goto(`${baseUrl.replace(/\/?$/, '/')}#download`, { waitUntil: 'networkidle2' });
+      await dismissBanner(page);
+      await delay(800);
       await page.evaluate(() => document.getElementById('download')?.scrollIntoView({ block: 'start' }));
       await delay(600);
     },
@@ -94,6 +122,7 @@ const browser = await puppeteer.launch({
 });
 
 const page = await browser.newPage();
+await preparePage(page);
 await page.setViewport({ width: 1280, height: 900, deviceScaleFactor: 2 });
 
 for (const shot of shots) {
