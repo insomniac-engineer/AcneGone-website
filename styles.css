@@ -340,51 +340,17 @@ h2 em,
   min-height: 620px;
   display: grid;
   place-items: center;
-  perspective: 1400px;
 }
 
 .float-card {
   position: absolute;
-  z-index: 2;
-  min-width: 170px;
-  padding: 0;
-  border: 0;
-  background: none;
-  opacity: 0;
-  cursor: pointer;
-  font: inherit;
-  color: inherit;
-  text-align: left;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.float-card-face {
-  display: block;
   background: #fff;
   border-radius: 18px;
   padding: 14px 16px;
   box-shadow: 0 16px 40px rgba(16, 36, 28, 0.12);
-  border: 1px solid rgba(228, 235, 230, 0.9);
-  transform: rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) rotateZ(var(--tilt-z, 0deg))
-    translateZ(var(--tilt-lift, 0px));
-  transform-style: preserve-3d;
-  transition:
-    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.55s ease;
-  will-change: transform;
-}
-
-.float-card.is-tilted .float-card-face {
-  box-shadow: 0 26px 52px rgba(16, 36, 28, 0.18);
-}
-
-.float-card:focus-visible .float-card-face {
-  outline: 2px solid var(--blue-soft);
-  outline-offset: 3px;
-}
-
-.float-card:active:not(.is-tilted) .float-card-face {
-  transform: rotateX(-2deg) rotateY(4deg) translateZ(6px) scale(0.985);
+  z-index: 2;
+  min-width: 170px;
+  opacity: 0;
 }
 
 .float-card.day {
@@ -403,7 +369,6 @@ h2 em,
 }
 
 .float-card .label {
-  display: block;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -412,21 +377,9 @@ h2 em,
 }
 
 .float-card .value {
-  display: block;
   font-weight: 800;
   font-size: 18px;
   letter-spacing: -0.03em;
-  margin-top: 2px;
-}
-
-.float-card .value-sm {
-  font-size: 15px;
-}
-
-.float-card .float-meta {
-  display: block;
-  color: var(--muted);
-  font-size: 13px;
   margin-top: 2px;
 }
 
@@ -1197,10 +1150,6 @@ body.has-med-banner {
     float-card 5.5s ease-in-out 1.6s infinite;
 }
 
-.hero.is-ready .float-card.is-tilted {
-  animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -1256,8 +1205,6 @@ body.has-med-banner {
   .closer-mesh,
   .kicker .dot,
   .float-card,
-  .float-card-face { transition: none; }
-  .float-card:active:not(.is-tilted) .float-card-face { transform: none; }
   .hero-grid > div:first-child > *,
   .hero-stage .phone,
   .hero.is-ready .float-card,

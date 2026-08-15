@@ -1,0 +1,24 @@
+{
+  "name": "acnegone-website",
+  "version": "1.0.0",
+  "description": "Static landing page for [AcneGone](https://github.com/insomniac-engineer/AcneGone).",
+  "main": "app.js",
+  "scripts": {
+    "screenshots": "node scripts/capture-readme-screenshots.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/insomniac-engineer/AcneGone-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/insomniac-engineer/AcneGone-website/issues"
+  },
+  "homepage": "https://github.com/insomniac-engineer/AcneGone-website#readme",
+  "devDependencies": {
+    "puppeteer-core": "^23.11.1"
+  }
+}
