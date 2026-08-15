@@ -5,6 +5,27 @@ const featureButtons = document.querySelectorAll("[data-feature]");
 const featureImages = document.querySelectorAll("[data-feature-img]");
 const hero = document.querySelector(".hero");
 
+/** Optional tip link — Ko-fi, Buy Me a Coffee, etc. Leave empty to hide footer link. */
+const SUPPORT_URL = "https://ko-fi.com/insomniac-engineer";
+
+document.querySelectorAll("[data-support-link]").forEach((link) => {
+  if (!SUPPORT_URL) {
+    if (link.closest(".footer")) {
+      link.setAttribute("hidden", "");
+    } else {
+      const text = document.createElement("span");
+      text.className = "support-text";
+      text.textContent = link.textContent;
+      link.replaceWith(text);
+    }
+    return;
+  }
+  link.removeAttribute("hidden");
+  link.href = SUPPORT_URL;
+  link.rel = "noopener noreferrer";
+  link.target = "_blank";
+});
+
 const onScroll = () => {
   header?.classList.toggle("is-scrolled", window.scrollY > 8);
 };
