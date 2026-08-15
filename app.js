@@ -16,6 +16,56 @@ requestAnimationFrame(() => {
   hero?.classList.add("is-ready");
 });
 
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+const floatTilts = {
+  day: [
+    { x: 0, y: 0, z: 0, lift: 0 },
+    { x: -7, y: 11, z: 1.5, lift: 16 },
+    { x: 5, y: -9, z: -1, lift: 12 },
+    { x: -4, y: 7, z: 2, lift: 20 },
+  ],
+  track: [
+    { x: 0, y: 0, z: 0, lift: 0 },
+    { x: -6, y: -13, z: 0, lift: 15 },
+    { x: 7, y: 9, z: -2, lift: 13 },
+    { x: -9, y: -6, z: 1.5, lift: 18 },
+  ],
+  vault: [
+    { x: 0, y: 0, z: 0, lift: 0 },
+    { x: 9, y: 8, z: -1, lift: 14 },
+    { x: -7, y: 11, z: 1, lift: 16 },
+    { x: 6, y: -7, z: 2, lift: 12 },
+  ],
+};
+
+const applyFloatTilt = (card, pose) => {
+  card.style.setProperty("--tilt-x", `${pose.x}deg`);
+  card.style.setProperty("--tilt-y", `${pose.y}deg`);
+  card.style.setProperty("--tilt-z", `${pose.z}deg`);
+  card.style.setProperty("--tilt-lift", `${pose.lift}px`);
+  const isNeutral = !pose.x && !pose.y && !pose.z && !pose.lift;
+  card.classList.toggle("is-tilted", !isNeutral);
+};
+
+const getFloatKind = (card) => {
+  if (card.classList.contains("day")) return "day";
+  if (card.classList.contains("track")) return "track";
+  return "vault";
+};
+
+if (!prefersReducedMotion) {
+  document.querySelectorAll(".float-card").forEach((card) => {
+    card.dataset.tiltIndex = "0";
+    card.addEventListener("click", () => {
+      const poses = floatTilts[getFloatKind(card)];
+      const next = (Number(card.dataset.tiltIndex) + 1) % poses.length;
+      card.dataset.tiltIndex = String(next);
+      applyFloatTilt(card, poses[next]);
+    });
+  });
+}
+
 menuToggle?.addEventListener("click", () => {
   const open = mobileNav?.classList.toggle("is-open");
   menuToggle.setAttribute("aria-expanded", open ? "true" : "false");
@@ -69,8 +119,6 @@ revealItems.forEach((el, index) => {
   const groupDelay = Math.min((index % 4) * 0.08, 0.24);
   el.style.setProperty("--reveal-delay", `${groupDelay}s`);
 });
-
-const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 if (!prefersReducedMotion && "IntersectionObserver" in window) {
   const revealObserver = new IntersectionObserver(
