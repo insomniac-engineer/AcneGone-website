@@ -10,7 +10,7 @@ const SUPPORT_URL = "https://ko-fi.com/insomniacengineer";
 
 document.querySelectorAll("[data-support-link]").forEach((link) => {
   if (!SUPPORT_URL) {
-    if (link.closest(".footer")) {
+    if (link.closest(".footer") || link.classList.contains("support-icon-btn") || link.classList.contains("mobile-support")) {
       link.setAttribute("hidden", "");
     } else {
       const text = document.createElement("span");

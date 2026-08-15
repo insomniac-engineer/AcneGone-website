@@ -153,7 +153,42 @@ button {
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
+}
+
+.support-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--forest);
+  flex-shrink: 0;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.support-icon-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.support-icon-btn:hover {
+  background: var(--wash);
+  border-color: rgba(142, 228, 168, 0.55);
+  transform: translateY(-1px);
+}
+
+.support-icon-btn[hidden],
+.mobile-support[hidden] {
+  display: none;
+}
+
+.mobile-support {
+  font-weight: 700;
+  color: var(--forest);
 }
 
 .btn {
