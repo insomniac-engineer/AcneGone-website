@@ -1,12 +1,7 @@
 # AcneGone website
 
-Marketing site for **[AcneGone](https://github.com/insomniac-engineer/AcneGone)** — a free, private companion for isotretinoin (Accutane) and skin tracking. No account, no ads, photos stay on your phone.
-
-This repo is a static landing page (HTML/CSS/JS) published on GitHub Pages. The mobile app lives in the [AcneGone app repo](https://github.com/insomniac-engineer/AcneGone).
-
+**[AcneGone](https://github.com/insomniac-engineer/AcneGone)** — a free, private companion for isotretinoin (Accutane) and skin tracking. No account, no ads, photos stay on your phone.
 **Live site:** https://insomniac-engineer.github.io/AcneGone-website/
-
-The preview images below live in [`screenshots/`](screenshots/) and are committed to the repo. For README copy or structure changes, reuse these files — no need to recapture.
 
 ![AcneGone landing page — hero with phone mockup, floating stat cards, and store badges](screenshots/01-hero.png)
 
