@@ -290,8 +290,15 @@ h2 em,
   margin-top: 32px;
 }
 
+.store-row--center {
+  justify-content: center;
+}
+
 .store-badge {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
   line-height: 0;
   border-radius: 8px;
   transition: opacity 0.2s ease, transform 0.2s ease;
@@ -309,7 +316,7 @@ h2 em,
 }
 
 .store-badge.is-soon {
-  opacity: 0.55;
+  cursor: default;
 }
 
 .hero-note {
@@ -749,12 +756,34 @@ h2,
 
 .closer-mesh {
   position: absolute;
-  inset: -20%;
-  background:
-    radial-gradient(closest-side at 20% 40%, rgba(142, 228, 168, 0.35), transparent 70%),
-    radial-gradient(closest-side at 80% 60%, rgba(126, 200, 240, 0.28), transparent 70%);
+  inset: 0;
+  overflow: hidden;
   pointer-events: none;
-  animation: mesh-drift 22s ease-in-out infinite alternate-reverse;
+}
+
+.closer-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(72px);
+  will-change: transform;
+}
+
+.closer-orb-a {
+  width: min(52vw, 420px);
+  height: min(52vw, 420px);
+  left: 8%;
+  top: 18%;
+  background: rgba(142, 228, 168, 0.38);
+  animation: closer-orb-a 26s ease-in-out infinite alternate;
+}
+
+.closer-orb-b {
+  width: min(48vw, 380px);
+  height: min(48vw, 380px);
+  right: 8%;
+  top: 28%;
+  background: rgba(126, 200, 240, 0.32);
+  animation: closer-orb-b 32s ease-in-out infinite alternate-reverse;
 }
 
 .closer .wrap {
@@ -1081,6 +1110,16 @@ body.has-med-banner {
   to { transform: translate(3%, -2%) scale(1.04); }
 }
 
+@keyframes closer-orb-a {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(6%, -5%) scale(1.06); }
+}
+
+@keyframes closer-orb-b {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(-5%, 7%) scale(1.05); }
+}
+
 @keyframes pulse-dot {
   0%, 100% {
     box-shadow: 0 0 0 4px rgba(142, 228, 168, 0.35);
@@ -1191,7 +1230,7 @@ body.has-med-banner {
   .reveal,
   .header { transition: none; }
   .hero-mesh,
-  .closer-mesh,
+  .closer-orb,
   .kicker .dot,
   .float-card,
   .hero-grid > div:first-child > *,
