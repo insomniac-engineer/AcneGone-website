@@ -352,6 +352,85 @@ h2 em,
 
 .store-badge.is-soon {
   cursor: default;
+  opacity: 0.72;
+}
+
+.android-beta {
+  margin-top: 20px;
+  max-width: 360px;
+}
+
+.android-beta--dark {
+  margin-inline: auto;
+  max-width: 420px;
+}
+
+.android-beta-kicker {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.android-beta--dark .android-beta-kicker {
+  color: rgba(243, 247, 244, 0.65);
+}
+
+.btn-android-beta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: var(--forest);
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  border: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.btn-android-beta:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.android-beta--dark .btn-android-beta {
+  background: #fff;
+  color: var(--forest-deep);
+}
+
+.android-beta-help {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.android-beta--dark .android-beta-help {
+  color: rgba(243, 247, 244, 0.62);
+  text-align: left;
+}
+
+.android-beta-help summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--forest);
+}
+
+.android-beta--dark .android-beta-help summary {
+  color: #c8f5d8;
+}
+
+.android-beta-help ol {
+  margin: 10px 0 0;
+  padding-left: 1.2rem;
+}
+
+.android-beta-help li + li {
+  margin-top: 6px;
 }
 
 .hero-note {
