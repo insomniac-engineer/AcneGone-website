@@ -6,6 +6,8 @@ This repo is a static landing page (HTML/CSS/JS) published on GitHub Pages. The 
 
 **Live site:** https://insomniac-engineer.github.io/AcneGone-website/
 
+The preview images below live in [`screenshots/`](screenshots/) and are committed to the repo. For README copy or structure changes, reuse these files — no need to recapture.
+
 ![AcneGone landing page — hero with phone mockup, floating stat cards, and store badges](screenshots/01-hero.png)
 
 ## What’s on the site
@@ -91,14 +93,28 @@ node compose-share-screenshot.cjs
 
 Store badge SVGs live in `assets/badges/`.
 
-## Regenerate README screenshots
+## README screenshots (`screenshots/`)
 
-Captures each landing-page section from the live site (or a local URL):
+These PNGs are **checked in** and referenced directly by this README. Edit the README or reuse the existing files as-is — you do not need to run the capture script for documentation updates.
+
+| File | Section |
+|------|---------|
+| `01-hero.png` | Hero |
+| `02-features.png` | Product — dose journey |
+| `03-features-share.png` | Product — share / Hide eyes |
+| `04-why.png` | Why AcneGone |
+| `05-included.png` | Everything included |
+| `06-privacy.png` | Privacy |
+| `07-download.png` | Download |
+
+### Optional: refresh captures
+
+Only re-run the script when the live site layout or styling changes enough that the previews would look outdated:
 
 ```bash
 npm install
 npm run screenshots
-# or: node scripts/capture-readme-screenshots.mjs http://localhost:4173/
+# or against local preview: node scripts/capture-readme-screenshots.mjs http://localhost:4173/
 ```
 
-Requires Google Chrome. The script dismisses the medical disclaimer banner for cleaner captures.
+Requires Google Chrome. Output overwrites the files in `screenshots/`.

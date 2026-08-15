@@ -1,6 +1,10 @@
 #!/usr/bin/env node
 /**
- * Capture README website screenshots from the live (or local) site.
+ * Optional: refresh committed README screenshots in screenshots/.
+ *
+ * You do NOT need to run this for README text edits — reuse the existing PNGs.
+ * Run only when the landing page design changes and previews should be updated.
+ *
  * Usage: node scripts/capture-readme-screenshots.mjs [baseUrl]
  */
 import puppeteer from 'puppeteer-core';
