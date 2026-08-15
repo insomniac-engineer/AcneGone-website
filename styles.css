@@ -286,41 +286,30 @@ h2 em,
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+  align-items: center;
   margin-top: 32px;
 }
 
-.store-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: #111;
-  color: #fff;
-  border-radius: 10px;
-  padding: 10px 16px 10px 12px;
-  min-width: 176px;
+.store-badge {
+  display: inline-block;
+  line-height: 0;
+  border-radius: 8px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.store-btn svg {
-  width: 22px;
-  height: 22px;
-  flex-shrink: 0;
+.store-badge:hover:not(.is-soon) {
+  opacity: 0.88;
+  transform: translateY(-1px);
 }
 
-.store-btn small {
+.store-badge img {
   display: block;
-  font-size: 10px;
-  opacity: 0.75;
-  font-weight: 600;
+  height: 40px;
+  width: auto;
 }
 
-.store-btn strong {
-  display: block;
-  font-size: 15px;
-  letter-spacing: -0.02em;
-}
-
-.store-btn.is-soon {
-  background: #2b3530;
+.store-badge.is-soon {
+  opacity: 0.55;
 }
 
 .hero-note {
@@ -953,8 +942,8 @@ h2,
     padding: 12px 0 8px;
   }
 
-  .store-btn {
-    width: 100%;
+  .store-badge img {
+    height: 40px;
   }
 
   .mobile-nav.is-open {
