@@ -6,7 +6,7 @@ const featureImages = document.querySelectorAll("[data-feature-img]");
 const hero = document.querySelector(".hero");
 
 /** Optional tip link — Ko-fi, Buy Me a Coffee, etc. Leave empty to hide footer link. */
-const SUPPORT_URL = "https://ko-fi.com/insomniac-engineer";
+const SUPPORT_URL = "https://ko-fi.com/insomniacengineer";
 
 document.querySelectorAll("[data-support-link]").forEach((link) => {
   if (!SUPPORT_URL) {
