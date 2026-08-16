@@ -9,7 +9,7 @@ const hero = document.querySelector(".hero");
 const SUPPORT_URL = "https://ko-fi.com/insomniacengineer";
 
 /** Direct Android APK — EAS preview build or GitHub Release. Leave empty to hide beta download. */
-const ANDROID_APK_URL = "https://expo.dev/artifacts/eas/WBBd_BKzZmSGkjANg2WJZ8J2Yv2fwNheskIloygmYIg.apk";
+const ANDROID_APK_URL = "https://expo.dev/artifacts/eas/2liiKUwQcLhJ0a1ZL3rRLFtr5APD9YFAavJHJGM-soE.apk";
 
 document.querySelectorAll("[data-apk-block]").forEach((block) => {
   if (!ANDROID_APK_URL) {
