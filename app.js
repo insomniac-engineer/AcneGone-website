@@ -8,24 +8,6 @@ const hero = document.querySelector(".hero");
 /** Optional tip link — Ko-fi, Buy Me a Coffee, etc. Leave empty to hide footer link. */
 const SUPPORT_URL = "https://ko-fi.com/insomniacengineer";
 
-/** Direct Android APK — EAS preview build or GitHub Release. Leave empty to hide beta download. */
-const ANDROID_APK_URL = "https://expo.dev/artifacts/eas/2liiKUwQcLhJ0a1ZL3rRLFtr5APD9YFAavJHJGM-soE.apk";
-
-document.querySelectorAll("[data-apk-block]").forEach((block) => {
-  if (!ANDROID_APK_URL) {
-    block.setAttribute("hidden", "");
-    return;
-  }
-  block.removeAttribute("hidden");
-});
-
-document.querySelectorAll("[data-apk-download]").forEach((link) => {
-  if (!ANDROID_APK_URL) return;
-  link.href = ANDROID_APK_URL;
-  link.rel = "noopener noreferrer";
-  link.setAttribute("download", "AcneGone.apk");
-});
-
 document.querySelectorAll("[data-support-link]").forEach((link) => {
   if (!SUPPORT_URL) {
     if (link.closest(".footer") || link.classList.contains("support-icon-btn") || link.classList.contains("mobile-support")) {
