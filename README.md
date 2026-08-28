@@ -1,7 +1,9 @@
 # AcneGone website
 
-**[AcneGone](https://github.com/insomniac-engineer/AcneGone)** — a free, private companion for isotretinoin (Accutane) and skin tracking. No account, no ads, photos stay on your phone.
+**[AcneGone](https://github.com/insomniac-engineer/AcneGone)** — a free, private skin tracker. Optional pill diary if your dermatologist prescribed tablets. No account, no ads, photos stay on your phone.
 **Live site:** https://insomniac-engineer.github.io/AcneGone-website/
+
+Faces in landing screenshots are AI-generated sample data, not a real person.
 
 ![AcneGone landing page — hero with phone mockup, floating stat cards, and store badges](screenshots/01-hero.png)
 

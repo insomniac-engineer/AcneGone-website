@@ -19,6 +19,8 @@ const outDir = path.join(root, 'screenshots');
 const baseUrl = process.argv[2] ?? 'https://insomniac-engineer.github.io/AcneGone-website/';
 
 const chromePaths = [
+  '/usr/local/bin/google-chrome',
+  '/usr/bin/google-chrome',
   '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
   '/Applications/Chromium.app/Contents/MacOS/Chromium',
 ];
