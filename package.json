@@ -4,6 +4,7 @@
   "description": "Static landing page for [AcneGone](https://github.com/insomniac-engineer/AcneGone).",
   "main": "app.js",
   "scripts": {
+    "start": "python3 -m http.server 8765",
     "screenshots": "node scripts/capture-readme-screenshots.mjs"
   },
   "repository": {
